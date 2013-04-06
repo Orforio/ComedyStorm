@@ -1,5 +1,5 @@
-CSSpellID = 123814 -- SpellID for Storm Unleashed
-CSSoundPlaying = false
+CSSpellID = 123814; -- SpellID for Storm Unleashed
+CSSoundPlaying = false;
 
 print("Comedy Storm Loaded.");
 
@@ -9,10 +9,11 @@ function SlashCmdList.COMEDYSTORM(msg, editBox)
     PlayComedyStorm()
     else
     StopComedyStorm()
+    end
 end
 
 function CSEventHandler(self,event,...)
-	local arg1,arg2,arg3,arg4,arg5=...
+	local arg1,arg2,arg3,arg4,arg5=...;
 	if (event=="UNIT_SPELLCAST_SUCCEEDED") and -- Storm Unleashed begins
 		(arg5==CSSpellID) then
 			PlayComedyStorm()
@@ -22,16 +23,19 @@ function CSEventHandler(self,event,...)
 	end
 end
 
-local CSFrame = CreateFrame("FRAME", "ComedyStormFrame");
-CSFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED", "PLAYER_LEAVE_COMBAT");
-CSFrame:SetScript("OnEvent", CSEventHandler)
+local CSFrameSpell = CreateFrame("FRAME", "ComedyStormSpellFrame");
+local CSFrameCombat = CreateFrame("FRAME", "ComedyStormCombatFrame");
+CSFrameSpell:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED");
+CSFrameCombat:RegisterEvent("PLAYER_LEAVE_COMBAT");
+CSFrameSpell:SetScript("OnEvent", CSEventHandler);
+CSFrameCombat:SetScript("OnEvent", CSEventHandler);
 
 function PlayComedyStorm()
-	PlayMusic("Interface\\AddOns\\ComedyStorm\\ComedyStorm1.mp3")
-	CSSoundPlaying = true
+	PlayMusic("Interface\\AddOns\\ComedyStorm\\ComedyStorm1.mp3");
+	CSSoundPlaying = true;
 end
 
 function StopComedyStorm()
 	StopMusic();
-	CSSoundPlaying = false
+	CSSoundPlaying = false;
 end

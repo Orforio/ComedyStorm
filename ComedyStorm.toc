@@ -1,6 +1,7 @@
 ## Interface: 50200
 ## Title: Comedy Storm
 ## Notes: Plays comedy music during the Storm Unleashed phase of the HoF Ta'yak encounter.
+## Author: Orforio
 ## Version: 0.1
 ## LoadManagers: DBM-Core
 ## LoadWith: DBM-HeartofFear
